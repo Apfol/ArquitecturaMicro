@@ -115,7 +115,15 @@ public class Controller implements Initializable {
     );
 
     public void onClickContador() {
-        int cantidadContador = registrosContador.size();
+
+        int cantidadContador = 0;
+
+        for (Registro registro : registrosContador) {
+            if (registro.getRegistro().equals(SEPARADOR.getRegistro())) {
+                cantidadContador++;
+            }
+        }
+
         registrosContador.add(new Registro(binarioSeisBits(cantidadContador)));
         String contadorActual = registrosContador.get(registrosContador.size() - 1).getRegistro();
 
@@ -136,6 +144,8 @@ public class Controller implements Initializable {
         contenidoMemoria = getContenidoMemoria(direccionEnMemoria);
 
         registrosEntrada.add(new Registro(contenidoMemoria));
+
+        registrosDatos.add(new Registro(contenidoMemoria));
 
         realizarOperacion(instruccionEnMemoria);
 
@@ -173,29 +183,37 @@ public class Controller implements Initializable {
         switch (instruccion) {
             case "000000":
                 suma();
+                break;
             case "000001":
                 resta();
+                break;
             case "000010":
                 division();
+                break;
             case "000011":
                 potencia();
+                break;
             case "000100":
                 or();
+                break;
             case "000101":
                 xor();
+                break;
             case "000110":
                 moverMemoria();
+                break;
             case "000111":
                 finalizar();
+                break;
         }
     }
 
     private void finalizar() {
-        
+
     }
 
     private void moverMemoria() {
-
+        
     }
 
     private void xor() {
@@ -207,24 +225,53 @@ public class Controller implements Initializable {
     }
 
     private void potencia() {
+        String ultimaEntrada = registrosEntrada.get(registrosEntrada.size() - 1).getRegistro();
+        String utlimaAcumulador = ultimoAcmuladorSinSeparador(registrosAcumulador);
 
+        int decimalEntrada = Integer.parseInt(ultimaEntrada, 2);
+        int decimalAcumulador = Integer.parseInt(utlimaAcumulador, 2);
+
+        registrosAcumulador.add(new Registro(Integer.toBinaryString(decimalAcumulador ^ decimalEntrada)));
     }
 
     private void division() {
+        String ultimaEntrada = registrosEntrada.get(registrosEntrada.size() - 1).getRegistro();
+        String utlimaAcumulador = ultimoAcmuladorSinSeparador(registrosAcumulador);
 
+        int decimalEntrada = Integer.parseInt(ultimaEntrada, 2);
+        int decimalAcumulador = Integer.parseInt(utlimaAcumulador, 2);
+
+        registrosAcumulador.add(new Registro(Integer.toBinaryString(decimalAcumulador / decimalEntrada)));
     }
 
     private void resta() {
+        String ultimaEntrada = registrosEntrada.get(registrosEntrada.size() - 1).getRegistro();
+        String utlimaAcumulador = ultimoAcmuladorSinSeparador(registrosAcumulador);
 
+        int decimalEntrada = Integer.parseInt(ultimaEntrada, 2);
+        int decimalAcumulador = Integer.parseInt(utlimaAcumulador, 2);
+
+        registrosAcumulador.add(new Registro(Integer.toBinaryString(decimalAcumulador - decimalEntrada)));
     }
 
     private void suma() {
         String ultimaEntrada = registrosEntrada.get(registrosEntrada.size() - 1).getRegistro();
-        String utlimaAcumulador = registrosAcumulador.get(registrosAcumulador.size() - 1).getRegistro();
+        String utlimaAcumulador = ultimoAcmuladorSinSeparador(registrosAcumulador);
 
         int decimalEntrada = Integer.parseInt(ultimaEntrada, 2);
         int decimalAcumulador = Integer.parseInt(utlimaAcumulador, 2);
 
         registrosAcumulador.add(new Registro(Integer.toBinaryString(decimalAcumulador + decimalEntrada)));
     }
+
+    public String ultimoAcmuladorSinSeparador(ObservableList<Registro> acumulados) {
+        ObservableList<Registro> acumuladosSinSeparador = FXCollections.observableArrayList();
+        for(Registro r: acumulados) {
+            if(!r.getRegistro().equals(SEPARADOR.getRegistro())) {
+                acumuladosSinSeparador.add(r);
+            }
+        }
+        return acumuladosSinSeparador.get(acumuladosSinSeparador.size() - 1).getRegistro();
+    }
+
 }
