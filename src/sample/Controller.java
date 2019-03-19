@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -17,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-    private static Registro SEPARADOR = new Registro("-------------");
+    public static Registro SEPARADOR = new Registro("-------------");
 
     @FXML private TableView<Operacion> decodificadorTab;
     @FXML private TableColumn<Operacion, String> instruccionesCol;
@@ -46,8 +45,13 @@ public class Controller implements Initializable {
     @FXML private TableView<Registro> registroInstruccionesTab;
     @FXML private TableColumn<Registro, String> registroInstruccionesCol;
 
+<<<<<<< HEAD
     private ObservableList<RegistroMemoria> registrosMemoriaList() {
 
+=======
+    final ObservableList<RegistroMemoria> registrosMemoriaList() {
+        ObservableList<RegistroMemoria> registroMemoria = FXCollections.observableArrayList();
+>>>>>>> parent of 8571a3a... Con TextView
         for (int i = 0; i < 63; i++) {
             if(binarioSeisBits(i).equals("000000")) {
                 registroMemoria.add(new RegistroMemoria(binarioSeisBits(i), "000000100000"));
@@ -109,7 +113,7 @@ public class Controller implements Initializable {
 
     }
 
-    private final ObservableList<Operacion> operacionesList = FXCollections.observableArrayList(
+    final ObservableList<Operacion> operacionesList = FXCollections.observableArrayList(
             new Operacion("000000", "+", "suma"),
             new Operacion("000001", "-", "Resta"),
             new Operacion("000010", "/", "división"),
@@ -163,7 +167,7 @@ public class Controller implements Initializable {
         registrosAcumulador.add(SEPARADOR);
     }
 
-    private String binarioSeisBits(int decimal) {
+    String binarioSeisBits(int decimal) {
         String cadenaCeros = "";
         String binario = Integer.toBinaryString(decimal);
         if (binario.length() < 7) {
@@ -219,6 +223,7 @@ public class Controller implements Initializable {
     }
 
     private void moverMemoria() {
+<<<<<<< HEAD
         String utlimaAcumulador = ultimoAcmuladorSinSeparador(registrosAcumulador);
         String ultimaRegistroDirecciones = registrosDirecciones.get(registrosDirecciones.size() - 1).getRegistro();
 
@@ -228,6 +233,9 @@ public class Controller implements Initializable {
             }
         }
         memoriaTab.refresh();
+=======
+        
+>>>>>>> parent of 8571a3a... Con TextView
     }
 
     private void xor() {
