@@ -6,11 +6,11 @@ import javafx.scene.control.TextField;
 public class RegistroMemoria {
 
     String direccion;
-    TextField contenido;
+    String contenido;
 
     public RegistroMemoria(String direccion, String contenido) {
         this.direccion = direccion;
-        this.contenido = new TextField(contenido);
+        this.contenido = contenido;
     }
 
     public String getDireccion() {
@@ -21,11 +21,11 @@ public class RegistroMemoria {
         this.direccion = direccion;
     }
 
-    public TextField getContenido() {
+    public String getContenido() {
         return contenido;
     }
 
-    public void setContenido(TextField contenido) {
+    public void setContenido(String contenido) {
         this.contenido = contenido;
     }
 }

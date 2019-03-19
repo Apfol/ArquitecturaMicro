@@ -47,9 +47,13 @@ public class Controller implements Initializable {
     @FXML private TableColumn<Registro, String> registroInstruccionesCol;
 
     private ObservableList<RegistroMemoria> registrosMemoriaList() {
-        ObservableList<RegistroMemoria> registroMemoria = FXCollections.observableArrayList();
+
         for (int i = 0; i < 63; i++) {
-            registroMemoria.add(new RegistroMemoria(binarioSeisBits(i), ""));
+            if(binarioSeisBits(i).equals("000000")) {
+                registroMemoria.add(new RegistroMemoria(binarioSeisBits(i), "000000100000"));
+            } else {
+                registroMemoria.add(new RegistroMemoria(binarioSeisBits(i), ""));
+            }
         }
         return registroMemoria;
     }
@@ -57,6 +61,7 @@ public class Controller implements Initializable {
     private final ObservableList<Registro> registrosDirecciones = FXCollections.observableArrayList();
     private final ObservableList<Registro> registrosInstrucciones = FXCollections.observableArrayList();
     private final ObservableList<Registro> registrosDatos = FXCollections.observableArrayList();
+    ObservableList<RegistroMemoria> registroMemoria = FXCollections.observableArrayList();
     private final ObservableList<Registro> registrosEntrada = FXCollections.observableArrayList(
             new Registro("000000000000")
     );
@@ -174,7 +179,7 @@ public class Controller implements Initializable {
     private String getContenidoMemoria(String direccion) {
         for (int i = 0; i < registrosMemoriaList().size(); i++) {
             if (memoriaTab.getItems().get(i).getDireccion().equals(direccion)) {
-                return memoriaTab.getItems().get(i).getContenido().getText();
+                return memoriaTab.getItems().get(i).getContenido();
             }
         }
         return null;
@@ -219,7 +224,7 @@ public class Controller implements Initializable {
 
         for(RegistroMemoria r: registrosMemoriaList()) {
             if(ultimaRegistroDirecciones.equals(r.getDireccion())) {
-                r.setContenido(new TextField(utlimaAcumulador));
+                r.setContenido(utlimaAcumulador);
             }
         }
         memoriaTab.refresh();
