@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polyline?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <columnConstraints>
+      <ColumnConstraints maxWidth="52.0" minWidth="0.0" prefWidth="0.0" />
+      <ColumnConstraints />
+      <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+   </rowConstraints>
+   <children>
+      <TableView fx:id="decodificadorTab" prefHeight="254.0" prefWidth="281.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+        <columns>
+          <TableColumn id="decodificadorTabla" fx:id="instruccionesCol" prefWidth="75.0" text="Instrucción" />
+          <TableColumn fx:id="operacionesCol" prefWidth="75.0" text="Operación" />
+            <TableColumn fx:id="comentariosCol" prefWidth="75.0" text="Comentario" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <TableView fx:id="contadorTab" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="5">
+        <columns>
+          <TableColumn fx:id="contadorCol" prefWidth="75.0" text="Datos" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DECODIFICADOR" textAlignment="CENTER" wrappingWidth="278.13671875" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CONTADOR" textAlignment="CENTER" wrappingWidth="203.13671875" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTRO INSTRUCCIONES" textAlignment="CENTER" wrappingWidth="280.623046875" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+      <TableView fx:id="registroInstruccionesTab" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="15">
+        <columns>
+          <TableColumn fx:id="registroInstruccionesCol" prefWidth="75.0" text="Datos" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Line endX="25.0" startX="-25.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+      <Line endY="50.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+         <GridPane.margin>
+            <Insets left="95.0" />
+         </GridPane.margin>
+      </Line>
+      <TableView fx:id="registroDireccionesTab" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="15">
+        <columns>
+          <TableColumn fx:id="registroDireccionesCol" prefWidth="75.0" text="Datos" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTRO DIRECCIONES" textAlignment="CENTER" wrappingWidth="201.13671875" GridPane.columnIndex="6" GridPane.rowIndex="13" />
+      <Line endY="50.0" GridPane.columnIndex="6" GridPane.rowIndex="7">
+         <GridPane.margin>
+            <Insets left="95.0" />
+         </GridPane.margin>
+      </Line>
+      <TableView fx:id="memoriaTab" prefHeight="200.0" prefWidth="261.0" GridPane.columnIndex="8" GridPane.rowIndex="15">
+        <columns>
+          <TableColumn fx:id="direccionesCol" prefWidth="75.0" text="Dirección" />
+          <TableColumn fx:id="contenidoCol" prefWidth="75.0" text="Contenido" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="MEMORIA" textAlignment="CENTER" wrappingWidth="200.13671875" GridPane.columnIndex="8" GridPane.rowIndex="13" />
+      <Line endX="25.0" startX="-25.0" GridPane.columnIndex="7" GridPane.rowIndex="15" />
+      <Line endX="36.5" startX="-25.0" GridPane.columnIndex="9" GridPane.rowIndex="15" />
+      <TableView fx:id="registroDatosTab" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="15">
+        <columns>
+          <TableColumn fx:id="registroDatosCol" prefWidth="75.0" text="Datos" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTRO DATOS" textAlignment="CENTER" wrappingWidth="198.13671875" GridPane.columnIndex="10" GridPane.rowIndex="13" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ENTRADA" textAlignment="CENTER" wrappingWidth="198.13671875" GridPane.columnIndex="10" GridPane.rowIndex="3" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ACUMULADOR" textAlignment="CENTER" wrappingWidth="201.13671875" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+      <TableView fx:id="acumuladorTab" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="5">
+        <columns>
+          <TableColumn fx:id="acumuladorCol" prefWidth="75.0" text="Datos" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <TableView fx:id="entradaTab" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="5">
+        <columns>
+          <TableColumn fx:id="entradaCol" prefWidth="75.0" text="entradaCol" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Line endY="50.0" GridPane.columnIndex="10" GridPane.rowIndex="7">
+         <GridPane.margin>
+            <Insets left="95.0" />
+         </GridPane.margin>
+      </Line>
+      <Line endY="50.0" GridPane.columnIndex="8" GridPane.rowIndex="7">
+         <GridPane.margin>
+            <Insets left="95.0" />
+         </GridPane.margin>
+      </Line>
+      <Line endX="100.0" startX="359.29290771484375" GridPane.columnIndex="8" GridPane.rowIndex="9">
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </Line>
+      <Line endX="13.5" startX="-25.0" GridPane.columnIndex="9" GridPane.rowIndex="9" />
+      <Line endX="44.87867736816406" endY="175.87867736816406" startX="21.585784912109375" startY="118.58578491210938" GridPane.columnIndex="9" GridPane.rowIndex="11">
+         <GridPane.margin>
+            <Insets left="40.0" />
+         </GridPane.margin>
+      </Line>
+      <Line endX="25.0" startX="-25.0" GridPane.columnIndex="7" GridPane.rowIndex="9" />
+      <Line endX="100.0" startX="-100.0" GridPane.columnIndex="6" GridPane.rowIndex="9" />
+      <Line endX="25.0" startX="-25.0" GridPane.columnIndex="4" GridPane.rowIndex="9" />
+      <Line endX="195.58567810058594" endY="-62.595550537109375" startX="195.58578491210938" startY="-4.227935791015625" GridPane.columnIndex="1" GridPane.rowIndex="11">
+         <GridPane.margin>
+            <Insets left="95.0" />
+         </GridPane.margin>
+      </Line>
+      <Line endY="59.5" GridPane.columnIndex="6" GridPane.rowIndex="11">
+         <GridPane.margin>
+            <Insets left="95.0" />
+         </GridPane.margin>
+      </Line>
+      <Line endX="132.5" startX="-50.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+         <GridPane.margin>
+            <Insets left="95.0" />
+         </GridPane.margin>
+      </Line>
+      <Line endY="61.5" GridPane.columnIndex="10" GridPane.rowIndex="11">
+         <GridPane.margin>
+            <Insets left="95.0" />
+         </GridPane.margin>
+      </Line>
+      <Line endY="1.0" GridPane.columnIndex="10" GridPane.rowIndex="9">
+         <GridPane.margin>
+            <Insets left="95.0" />
+         </GridPane.margin>
+      </Line>
+      <Polyline fill="CHARTREUSE" points="-50.0, -40.0, 150.0, 60.00001525878906, -50.0, 60.00001525878906, -50.0, -40.0" strokeType="INSIDE" GridPane.columnIndex="10" GridPane.rowIndex="2" />
+      <Polyline fill="CHARTREUSE" points="-50.0, 56.00000762939453, 208.0, -43.99999237060547, 208.0, 55.99999237060547, -50.0, 56.0" strokeType="INSIDE" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+      <Polyline fill="CHARTREUSE" points="36.0, -102.99998474121094, 36.0, -2.000030517578125, -30.0, -2.0000152587890625, -30.0, -103.0" strokeType="INSIDE" GridPane.columnIndex="9" GridPane.rowIndex="2" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="11" GridPane.rowIndex="2" />
+      <Button mnemonicParsing="false" onMouseClicked="#onClickContador" prefHeight="96.0" prefWidth="281.0" text="REALIZAR CONTEO" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</GridPane>
