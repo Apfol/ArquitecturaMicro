@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -16,7 +17,7 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-    public static Registro SEPARADOR = new Registro("-------------");
+    private static Registro SEPARADOR = new Registro("-------------");
 
     @FXML private TableView<Operacion> decodificadorTab;
     @FXML private TableColumn<Operacion, String> instruccionesCol;
@@ -45,7 +46,7 @@ public class Controller implements Initializable {
     @FXML private TableView<Registro> registroInstruccionesTab;
     @FXML private TableColumn<Registro, String> registroInstruccionesCol;
 
-    final ObservableList<RegistroMemoria> registrosMemoriaList() {
+    private ObservableList<RegistroMemoria> registrosMemoriaList() {
         ObservableList<RegistroMemoria> registroMemoria = FXCollections.observableArrayList();
         for (int i = 0; i < 63; i++) {
             registroMemoria.add(new RegistroMemoria(binarioSeisBits(i), ""));
@@ -103,7 +104,7 @@ public class Controller implements Initializable {
 
     }
 
-    final ObservableList<Operacion> operacionesList = FXCollections.observableArrayList(
+    private final ObservableList<Operacion> operacionesList = FXCollections.observableArrayList(
             new Operacion("000000", "+", "suma"),
             new Operacion("000001", "-", "Resta"),
             new Operacion("000010", "/", "división"),
@@ -157,7 +158,7 @@ public class Controller implements Initializable {
         registrosAcumulador.add(SEPARADOR);
     }
 
-    String binarioSeisBits(int decimal) {
+    private String binarioSeisBits(int decimal) {
         String cadenaCeros = "";
         String binario = Integer.toBinaryString(decimal);
         if (binario.length() < 7) {
@@ -213,7 +214,15 @@ public class Controller implements Initializable {
     }
 
     private void moverMemoria() {
-        
+        String utlimaAcumulador = ultimoAcmuladorSinSeparador(registrosAcumulador);
+        String ultimaRegistroDirecciones = registrosDirecciones.get(registrosDirecciones.size() - 1).getRegistro();
+
+        for(RegistroMemoria r: registrosMemoriaList()) {
+            if(ultimaRegistroDirecciones.equals(r.getDireccion())) {
+                r.setContenido(new TextField(utlimaAcumulador));
+            }
+        }
+        memoriaTab.refresh();
     }
 
     private void xor() {
